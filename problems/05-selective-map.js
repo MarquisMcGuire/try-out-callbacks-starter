@@ -41,11 +41,42 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - What do you expect each callback function to be returning?
 - How many times are you calling each callback function?
 *******************************************************************************/
+function isEven(n) {
+    return n % 2 === 0;
+}
 
-let selectiveMap = function() {
+function isPositive(n) {
+    return n > 0;
+}
 
+function square(n) {
+    return n * n;
+}
+
+function flipSign(n) {
+    return n * -1;
+}
+
+
+
+
+let selectiveMap = function(arr, cb1, cb2) {
+    let newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (cb1(arr[i]) === true ) {
+            newArr.push(cb2(arr[i]));
+        } else {
+            newArr.push(arr[i]);
+        };
+
+    };
+
+    return newArr;
 };
 
+console.log(selectiveMap([8, 5, 10, 4], isEven, square));
+// [ 64, 5, 100, 16 ]
 
 
 

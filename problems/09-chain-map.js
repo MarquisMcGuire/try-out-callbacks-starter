@@ -29,8 +29,16 @@ console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
-let chainMap = function() {
+let chainMap = function(val, ...cb) {
+    for (let i = 0; i < cb.length; i++) {
+        val = cb[i](val);
+    }
 
+
+    // ...cb.forEach(function(cb))
+    //     console.log(...cb);
+    //     console.log(function(cb));
+    return val;
 };
 
 
